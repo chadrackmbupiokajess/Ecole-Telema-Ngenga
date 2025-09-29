@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page.titre }} - École Téléma Ngenga{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-slate-100 dark:bg-slate-900 py-12 md:py-16">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight" data-aos="fade-up">{{ page.titre }}</h1>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-16 md:py-20">
+    <div class="container mx-auto max-w-5xl px-4">
+        <div class="glass p-8 md:p-12">
+            <div class="flex flex-col items-center text-center">
+                <!-- Logo -->
+                <div class="mb-8" data-aos="fade-down">
+                    <div class="w-40 h-40 p-2 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg">
+                        <div class="w-full h-full bg-white rounded-full overflow-hidden">
+                            <img class="w-full h-full object-cover" src="/media/Img_logo/logo.png" alt="Logo de l'École Téléma Ngenga">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="page-content text-base md:text-lg leading-relaxed space-y-6 max-w-3xl mx-auto" data-aos="fade-up">
+                    {{ page.contenu|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="pb-16 md:pb-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title" data-aos="fade-up">
+            Nos Valeurs
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <!-- Value 1: Excellence -->
+            <div class="glass p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="mx-auto mb-6 w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 text-white flex items-center justify-center shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Excellence</h3>
+                <p class="text-slate-600 dark:text-slate-300">Nous visons les plus hauts standards dans notre enseignement pour permettre à chaque élève d'atteindre son plein potentiel.</p>
+            </div>
+
+            <!-- Value 2: Respect -->
+            <div class="glass p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="mx-auto mb-6 w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 text-white flex items-center justify-center shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.562 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.865 3.017L6 10.333z" /></svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Respect</h3>
+                <p class="text-slate-600 dark:text-slate-300">Nous cultivons un environnement où chaque individu est traité avec dignité, bienveillance et équité.</p>
+            </div>
+
+            <!-- Value 3: Communauté -->
+            <div class="glass p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="mx-auto mb-6 w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 text-white flex items-center justify-center shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" /></svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Communauté</h3>
+                <p class="text-slate-600 dark:text-slate-300">Nous bâtissons des liens forts entre les élèves, les familles et l'équipe pour créer un réseau de soutien solide.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ post.titre }} - Blog{% endblock %}
+
+{% block content %}
+<!-- Article Header -->
+<section class="relative py-20 md:py-32 text-white text-center bg-slate-800 overflow-hidden">
+    {% if post.image_principale %}
+    <div class="absolute inset-0">
+        <img src="{{ post.image_principale.url }}" alt="{{ post.titre }}" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+    {% endif %}
+    <div class="container mx-auto px-4 relative z-10">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight" data-aos="fade-up">{{ post.titre }}</h1>
+        <p class="mt-4 text-lg text-slate-300" data-aos="fade-up" data-aos-delay="100">
+            Publié le {{ post.date_publication|date:"d F Y" }} par {{ post.auteur.get_full_name|default:post.auteur.username }}
+        </p>
+    </div>
+</section>
+
+<!-- Article Content -->
+<section class="bg-slate-50 dark:bg-slate-950 py-16 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="lg:grid lg:grid-cols-3 lg:gap-12">
+            <!-- Main Content (Animation retirée) -->
+            <div class="lg:col-span-2">
+                <article class="prose prose-lg dark:prose-invert max-w-none">
+                    {{ post.contenu|safe }}
+                </article>
+            </div>
+
+            <!-- Sidebar (Animation retirée) -->
+            <div class="lg:col-span-1 mt-12 lg:mt-0">
+                <div class="sticky top-24 p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-bold mb-4 text-slate-800 dark:text-white">Détails de l'article</h3>
+                    <ul class="text-slate-600 dark:text-slate-300 space-y-3">
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" /></svg>
+                            <span>{{ post.date_publication|date:"d F Y" }}</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z" /><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.022 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" /></svg>
+                            <span>{{ post.views }} vue{{ post.views|pluralize }}</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-rose-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>
+                            <span>{{ post.likes }} J'aime</span>
+                        </li>
+                    </ul>
+                    <hr class="my-6 border-slate-200 dark:border-slate-700">
+                    <h4 class="text-lg font-bold mb-3 text-slate-800 dark:text-white">Partager cet article</h4>
+                    <div class="flex items-center gap-4">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="text-slate-500 hover:text-blue-700 transition-colors" title="Partager sur Facebook"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg></a>
+                        <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ post.titre }}" target="_blank" class="text-slate-500 hover:text-sky-500 transition-colors" title="Partager sur Twitter"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.298 1.633 4.212 3.793 4.649-.65.177-1.354.23-2.06.088.621 1.924 2.423 3.32 4.564 3.359-1.625 1.276-3.675 2.032-5.902 2.032-.384 0-.762-.022-1.134-.067 2.099 1.353 4.606 2.148 7.321 2.148 8.694 0 13.456-7.224 13.456-13.456 0-.204-.005-.407-.013-.61a9.618 9.618 0 002.353-2.437z" /></svg></a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ post.titre }}&summary={{ post.contenu|truncatewords:20 }}" target="_blank" class="text-slate-500 hover:text-blue-600 transition-colors" title="Partager sur LinkedIn"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.98v16h4.98v-8.396c0-2.002 1.809-2.384 2.015-2.384 1.422 0 2.985 1.106 2.985 5.396v5.384h5v-9.5c0-5.5-3.34-7.5-6.489-7.5-3.149 0-5.511 2.5-5.511 2.5v-2.5h-4.982v16h4.98v-8.396c0-2.002 1.809-2.384 2.015-2.384.002-.001 2.983.001 2.983 5.396v5.384h5v-9.5c0-5.5-3.34-7.5-6.489-7.5-3.149 0-5.511 2.5-5.511 2.5z" /></svg></a>
+                        <button id="copy-link-button" class="text-slate-500 hover:text-green-500 transition-colors" title="Copier le lien">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <span id="copy-link-feedback" class="text-sm text-green-600 hidden">Lien copié !</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions: Like and Back -->
+        <div class="max-w-3xl mx-auto mt-16 text-center">
+             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                {% if has_liked %}
+                    <button disabled class="inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-slate-400 text-white cursor-not-allowed w-full sm:w-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>
+                        Vous avez déjà aimé
+                    </button>
+                {% else %}
+                    <form action="{% url 'blog:post_detail' post.pk %}" method="post" class="w-full sm:w-auto">
+                        {% csrf_token %}
+                        <button type="submit" class="inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-rose-500 hover:bg-rose-600 text-white shadow-lg transition-transform duration-300 hover:scale-105 w-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>
+                            J'aime cet article
+                        </button>
+                    </form>
+                {% endif %}
+                <a href="{% url 'blog:post_list' %}" class="inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-colors w-full sm:w-auto">
+                    &larr; Retour au blog
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const copyButton = document.getElementById('copy-link-button');
+    const copyFeedback = document.getElementById('copy-link-feedback');
+
+    if (copyButton) {
+        copyButton.addEventListener('click', function() {
+            const urlToCopy = window.location.href;
+
+            function fallbackCopyTextToClipboard(text) {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.top = "0";
+                textArea.style.left = "0";
+                textArea.style.position = "fixed";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                let successful = false;
+                try {
+                    successful = document.execCommand('copy');
+                } catch (err) {
+                    console.error('Fallback: Unable to copy', err);
+                }
+                document.body.removeChild(textArea);
+                return successful;
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(urlToCopy).then(function() {
+                    showFeedback(true);
+                }, function(err) {
+                    const result = fallbackCopyTextToClipboard(urlToCopy);
+                    showFeedback(result);
+                });
+            } else {
+                const result = fallbackCopyTextToClipboard(urlToCopy);
+                showFeedback(result);
+            }
+        });
+    }
+
+    function showFeedback(success) {
+        if (success) {
+            copyFeedback.textContent = 'Lien copié !';
+            copyFeedback.classList.remove('hidden', 'text-red-600');
+            copyFeedback.classList.add('text-green-600');
+        } else {
+            copyFeedback.textContent = 'Erreur';
+            copyFeedback.classList.remove('hidden', 'text-green-600');
+            copyFeedback.classList.add('text-red-600');
+        }
+        copyFeedback.classList.remove('hidden');
+        setTimeout(function() {
+            copyFeedback.classList.add('hidden');
+        }, 2000);
+    }
+});
+</script>
+{% endblock %}

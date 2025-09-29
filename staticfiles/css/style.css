@@ -1,0 +1,200 @@
+/* --- CHARTE GRAPHIQUE ET VARIABLES --- */
+:root {
+    --primary-color: #2563eb;      /* Bleu (Tailwind blue-600) */
+    --secondary-color: #f59e0b;  /* Ambre (Tailwind amber-400) */
+    --light-bg: #f8f9fa;         /* Gris clair pour les fonds de section */
+    --dark-text: #1f2937;        /* Gris (Tailwind gray-800) */
+    --white: #ffffff;            /* Blanc pur */
+    --border-radius: 1rem;     /* Coins arrondis (16px) */
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* Thème sombre (override des variables) */
+html[data-theme='dark'] {
+    --primary-color: #3b82f6; /* blue-500 */
+    --secondary-color: #fcd34d; /* amber-300 */
+    --light-bg: #242526;  /* Surface douce type Facebook */
+    --dark-text: #e4e6eb; /* Texte principal agréable */
+    --white: #18191a;     /* Fond principal très sombre */
+    --box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* --- STYLES GÉNÉRAUX --- */
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark-text);
+    background-color: var(--white);
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+}
+
+* { transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease; }
+
+
+/* --- SECTION HÉROS (PAGE D'ACCUEIL) --- */
+.hero-section {
+    height: 90vh;
+    min-height: 600px;
+    /* Superposition de couleur bleu nuit, plus sombre et subtile */
+    background: linear-gradient(rgba(23, 37, 84, 0.7), rgba(23, 37, 84, 0.7)), url('/media/image_fond_home/b.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Effet parallaxe */
+}
+
+/* --- ANIMATION TITRE HÉROS --- */
+@keyframes reveal-up {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated-title {
+    display: block;
+}
+
+.animated-title span {
+    display: block; /* Chaque ligne est un bloc */
+    overflow: hidden; /* Cache le texte qui dépasse */
+}
+
+/* Applique l'animation à l'intérieur du span */
+.animated-title span > span {
+    display: block;
+    animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animated-title .animated-title-line-2 > span {
+    animation-delay: 0.15s; /* Décale la deuxième ligne */
+}
+
+/* --- BARRE DE NAVIGATION --- */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--box-shadow);
+}
+
+html[data-theme='dark'] .navbar {
+    background-color: rgba(31, 41, 55, 0.8); /* gray-800/80 */
+}
+
+/* Lisibilité des formulaires en mode sombre */
+html[data-theme='dark'] input,
+html[data-theme='dark'] select,
+html[data-theme='dark'] textarea {
+    background-color: #242526;
+    color: #e4e6eb;
+    border-color: #3a3b3c;
+}
+html[data-theme='dark'] input::placeholder,
+html[data-theme='dark'] textarea::placeholder {
+    color: #b0b3b8;
+}
+
+.nav-link.active {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+}
+
+/* --- PANNEAU GLASS (AMÉLIORÉ) --- */
+.glass {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+html[data-theme='dark'] .glass {
+    background: rgba(55, 65, 81, 0.5); /* gray-700/50 */
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), 0 1px 0 0 rgba(255, 255, 255, 0.07) inset;
+}
+
+/* --- TITRES DE SECTION MODERNES --- */
+.section-title {
+    position: relative;
+    display: inline-block;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -15px;
+    width: 80px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+/* --- RESPONSIVE & MENU MOBILE --- */
+@media (max-width: 767px) {
+    /* Désactive l'effet parallaxe sur mobile pour la performance */
+    .hero-section {
+        background-attachment: scroll;
+    }
+
+    /* Par défaut, le menu est "fermé" : hauteur nulle et contenu caché */
+    #navbarNav {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+        transform: none;
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    /* Quand le body a la classe, le menu se "déplie" en animant sa hauteur */
+    body.mobile-menu-open #navbarNav {
+        max-height: 50rem; /* Valeur assez grande pour contenir tout le menu */
+    }
+
+    body.mobile-menu-open {
+        overflow: hidden; /* Empêche le scroll de la page derrière le menu */
+    }
+
+    .nav-link {
+        padding: 0.75rem 0;
+        display: block;
+        text-align: center;
+    }
+}
+
+/* --- STYLES POUR LE CONTENU DES ARTICLES (PROSE) --- */
+
+/* Règle générale pour forcer les éléments à rester dans le conteneur */
+.prose > * {
+    max-width: 100%;
+    word-wrap: break-word; /* Pour les anciens navigateurs */
+    overflow-wrap: break-word; /* Standard moderne */
+}
+
+/* Rendre les images responsives */
+.prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.75rem; /* 12px, pour un look moderne */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Gérer le débordement des blocs de code */
+.prose pre {
+    white-space: pre-wrap;   /* Permet au texte de passer à la ligne */
+    word-break: break-word;  /* Casse les mots longs si nécessaire */
+}
+
+/* Gérer le débordement des tableaux */
+.prose table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto; /* Ajoute une barre de défilement horizontale si nécessaire */
+}

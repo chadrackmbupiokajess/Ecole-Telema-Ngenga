@@ -1,0 +1,37 @@
+/* Pour le logo de la page de connexion */
+.login-logo img {
+    max-height: 120px !important;
+    max-width: 120px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+}
+
+/* Pour le logo dans la barre de navigation de l'admin */
+.brand-link .brand-image {
+    max-height: 30px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+}
+
+/* --- RESPONSIVE JAZZMIN DASHBOARD --- */
+@media (max-width: 767px) {
+    /* Force la rangée principale à empiler ses enfants verticalement */
+    .content .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* S'assure que chaque bloc prend toute la largeur */
+    .content .row > [class*="col-"] {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 1rem; /* Ajoute un espace entre les blocs empilés */
+    }
+}
+
+/* Empêche les boutons de déborder des cartes */
+.card .page-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+}

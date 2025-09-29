@@ -1,0 +1,105 @@
+
+📘 Cahier des charges – Site Web de l’École Téléma Ngenga
+
+🔰 1. Présentation générale
+Nom du projet :
+Site officiel des écoles gratuites "Téléma Ngenga" dans le Grand Bandundu (2 écoles).
+
+Objectif principal :
+Créer un site web dynamique et informatif permettant de :
+- Présenter l’école et sa mission
+- Valoriser ses actions et son impact
+- Inspirer la communauté à soutenir ou rejoindre la cause
+- Offrir un point de contact simple et clair
+
+🧭 2. Objectifs du site web
+- Informer sur l’histoire, la mission et les activités de l’école.
+- Présenter l’équipe (terrain et organisation).
+- Mettre en avant les actions concrètes déjà réalisées.
+- Encourager les dons, les partenariats ou l'engagement bénévole.
+- Gagner en visibilité auprès du grand public et des institutions.
+
+🧱 3. Structure du site (Pages principales)
+1. Accueil
+   - Message de bienvenue
+   - Présentation rapide de l’école
+   - Liens vers les autres pages
+
+2. À propos
+   - Vision et valeurs
+   - Philosophie de l’école
+   - Localisation (Bandundu, RDC)
+
+3. Notre histoire
+   - Contexte de création
+   - Les fondateurs
+   - Les étapes clés depuis le lancement
+
+4. Notre mission
+   - Scolarisation gratuite des jeunes
+   - Lutte contre l’analphabétisme
+   - Inclusion et équité en éducation
+
+5. Nos actions concrètes
+   - Nombre d’enfants scolarisés
+   - Programmes mis en place
+   - Témoignages
+   - Galeries photos/vidéos
+
+6. Nos équipes
+   - Sur le terrain : enseignants, encadreurs, coordinateurs
+   - Dans les coulisses : administration, bénévoles, partenaires
+   - Brève bio + photo de chaque membre
+
+7. Contact
+   - Formulaire de contact
+   - Adresse email, téléphone
+   - Réseaux sociaux
+
+⚙️ 4. Technologies utilisées
+- Back-end : Django (Python)
+- Front-end : HTML5, CSS3, JavaScript, Bootstrap (ou Tailwind CSS)
+- Base de données : PostgreSQL ou SQLite (selon l’hébergement)
+- Admin Django : pour gérer le contenu facilement
+
+📁 5. Fonctionnalités attendues
+- Interface responsive (mobile + desktop)
+- Admin sécurisé pour mettre à jour le contenu (pages, membres de l'équipe, etc.)
+- Formulaire de contact fonctionnel
+- Galerie médias (photos, vidéos)
+- SEO de base (titres, descriptions, mots-clés)
+- Possibilité d’ajouter un blog ou actualités (optionnel)
+- Page dons (optionnel : PayPal/Stripe/Mobile Money)
+
+🔐 6. Sécurité & Accessibilité
+- Protection des formulaires (CSRF)
+- Authentification pour l’admin
+- Respect des bonnes pratiques d’accessibilité (textes alternatifs, contraste, navigation claire)
+
+🎨 7. Design & UX
+- Design ultra-moderne : interface épurée, professionnelle et agréable à parcourir.
+- Responsive à 100% : compatibilité sur smartphones, tablettes et ordinateurs.
+- Palette de couleurs adaptée au logo “Lève-toi et brille” :
+  - Jaune/doré lumineux (symbole de lumière et espoir)
+  - Bleu clair (calme, confiance, éducation)
+  - Blanc (pureté)
+  - Gris clair (sobriété)
+- Typographie moderne et lisible (Google Fonts conseillés).
+- Navigation intuitive : menu clair, footer complet, hiérarchisation visuelle.
+- Photos/vidéos impactantes pour valoriser élèves et actions.
+- Appels à l’action visibles (CTA : Soutenir, Nous contacter, Découvrir nos actions).
+
+✅ 8. Tâches du développeur
+1. Installer et configurer Django avec PostgreSQL/SQLite.
+2. Créer les apps nécessaires (pages, équipe, actions, galerie, témoignages, contact, blog).
+3. Définir les modèles : TeamMember, ActionProject, GalleryImage, Testimonial, BlogPost, ContactMessage.
+4. Développer les templates responsives pour chaque page.
+5. Créer une charte graphique adaptée au logo “Lève-toi et brille”.
+6. Implémenter un design moderne et responsive (Tailwind ou Bootstrap).
+7. Tester sur mobile, tablette, PC (compatibilité totale).
+8. Configurer SEO (sitemap, robots.txt, meta tags).
+9. Gérer upload médias + thumbnails automatiques.
+10. Implémenter formulaire contact avec envoi email + enregistrement en DB.
+11. Déployer le site avec SSL et sécurité activée (HTTPS, CSRF, authentification admin).
+12. Rédiger un guide rapide pour l’équipe (utilisation admin + mises à jour).
+

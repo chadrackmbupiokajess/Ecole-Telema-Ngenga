@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Accueil - École Téléma Ngenga{% endblock %}
+
+{% block content %}
+<!-- HERO -->
+<section class="hero-section flex items-center justify-center text-center text-white">
+  <div class="container mx-auto px-4 py-24">
+    <h1 class="animated-title text-5xl md:text-7xl font-black tracking-tight mb-6">
+      <span class="animated-title-line"><span>L'éducation pour tous,</span></span>
+      <span class="animated-title-line-2"><span>l'avenir pour chacun.</span></span>
+    </h1>
+    <p class="text-base md:text-lg max-w-3xl mx-auto text-white/90 mb-8" data-aos="fade-up" data-aos-delay="300">
+      « Lève-toi et brille. » Notre mission est d'offrir une éducation gratuite et de qualité aux enfants du Grand Bandundu pour briser le cycle de la pauvreté.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="500">
+      <a href="{% url 'actions:actions' %}" class="inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white shadow-lg transition-transform duration-300 hover:scale-105">
+        Découvrir nos actions
+      </a>
+      <a href="{% url 'contact:contact' %}" class="inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 transition-colors duration-300">
+        Nous soutenir
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT -->
+<section class="container mx-auto px-4 py-20" id="featured-3">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title" data-aos="fade-up">
+    Notre Engagement
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="glass p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="mx-auto mb-6 w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 text-white flex items-center justify-center shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+          <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375z" />
+          <path fill-rule="evenodd" d="M3.087 9l.54 9.176A3 3 0 006.62 21h10.757a3 3 0 002.995-2.824L20.914 9H3.087zm6.163 3.75A.75.75 0 0110 12h4a.75.75 0 010 1.5h-4a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Éducation Gratuite</h3>
+      <p class="text-slate-600 dark:text-slate-300">Nous garantissons un accès à l'éducation pour tous, sans aucune barrière financière, en fournissant scolarité, uniformes et matériel scolaire.</p>
+    </div>
+    <div class="glass p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+      <div class="mx-auto mb-6 w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 text-white flex items-center justify-center shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+          <path fill-rule="evenodd" d="M9.315 7.584C12.195 3.883 16.695 1.5 21.75 1.5a.75.75 0 01.75.75c0 5.056-2.383 9.555-6.084 12.436A6.75 6.75 0 019.75 22.5a.75.75 0 01-.75-.75v-4.131A15.838 15.838 0 016.382 15H2.25a.75.75 0 01-.75-.75 6.75 6.75 0 017.815-6.666zM15 6.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" clip-rule="evenodd" />
+          <path d="M5.26 17.242a.75.75 0 10-.897-1.203 5.243 5.243 0 00-2.05 5.022.75.75 0 00.625.627 5.243 5.243 0 005.022-2.051.75.75 0 10-1.202-.897 3.744 3.744 0 01-3.008 1.51c0-1.23.592-2.323 1.51-3.008z" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Excellence & Valeurs</h3>
+      <p class="text-slate-600 dark:text-slate-300">Notre programme pédagogique vise l'excellence académique tout en inculquant des valeurs fortes d'intégrité, de respect et de citoyenneté.</p>
+    </div>
+    <div class="glass p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+      <div class="mx-auto mb-6 w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 text-white flex items-center justify-center shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+            <path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM5.25 9.375c0-1.036.84-1.875 1.875-1.875h.375a3 3 0 013 3v.75c0 1.036-.84 1.875-1.875 1.875h-.375a3 3 0 01-3-3v-.75zM14.25 11.625c0-1.036.84-1.875 1.875-1.875h.375a3 3 0 013 3v.75c0 1.036-.84 1.875-1.875 1.875h-.375a3 3 0 01-3-3v-.75z" />
+            <path fill-rule="evenodd" d="M6.375 16.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125H4.875c-.621 0-1.125-.504-1.125-1.125v-1.5c0-.621.504-1.125 1.125-1.125h1.5zM17.625 16.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125h-1.5c-.621 0-1.125-.504-1.125-1.125v-1.5c0-.621.504-1.125 1.125-1.125h1.5z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Impact Communautaire</h3>
+      <p class="text-slate-600 dark:text-slate-300">En formant la prochaine génération de leaders, nous investissons dans le développement durable de toute la communauté du Grand Bandundu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="container mx-auto px-4 py-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title" data-aos="fade-up">
+        Nos dernières actualités
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {% for post in latest_posts %}
+        <div class="glass flex flex-col overflow-hidden" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter 1 100 %}">
+            {% if post.image_principale %}
+                <img class="w-full h-48 object-cover" src="{{ post.image_principale.url }}" alt="Image pour {{ post.titre }}">
+            {% endif %}
+            <div class="p-6 flex flex-col flex-grow">
+                <h3 class="text-xl font-semibold mb-3">{{ post.titre }}</h3>
+                <p class="text-slate-600 dark:text-slate-300 mb-4 flex-grow">{{ post.contenu|truncatewords:20 }}</p>
+                <a href="{% url 'blog:post_detail' post.pk %}" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline self-start">Lire la suite →</a>
+            </div>
+        </div>
+        {% empty %}
+        <p class="col-span-3 text-center text-slate-500">Aucun article de blog à afficher pour le moment.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="container mx-auto px-4 my-16" data-aos="zoom-in">
+  <div class="glass flex flex-col lg:flex-row items-center gap-8 p-8">
+    <div class="flex-1">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Prêt à faire une différence ?</h2>
+      <p class="text-base md:text-lg mb-6 text-slate-600 dark:text-slate-300">Chaque contribution, grande ou petite, nous aide à maintenir la gratuité de l'école et à offrir un avenir meilleur à nos élèves. Rejoignez notre cause aujourd'hui.</p>
+      <a href="{% url 'contact:contact' %}" class="inline-flex items-center justify-center px-8 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-900 shadow-lg transition-transform duration-300 hover:scale-105">Faire un don</a>
+    </div>
+    <div class="w-full lg:w-[40%] overflow-hidden rounded-2xl shadow-md">
+      <img class="w-full h-auto object-cover" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1232&q=80" alt="">
+    </div>
+  </div>
+</section>
+{% endblock %}
