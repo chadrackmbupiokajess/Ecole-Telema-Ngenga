@@ -15,8 +15,8 @@ SECRET_KEY = config('SECRET_KEY')
 # DEBUG est lu depuis les variables d'environnement. Mettez DEBUG=True dans votre .env local.
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-# ALLOWED_HOSTS est lu depuis les variables d'environnement.
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1', cast=Csv())
+# Pour corriger l'erreur DisallowedHost sur PythonAnywhere
+ALLOWED_HOSTS = ['telemangenga.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -146,14 +146,14 @@ EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD', default='')
 
 # Jazzmin Settings
 JAZZMIN_SETTINGS = {
-    "site_title": "Administration Téléma Ngenga",
-    "site_header": "Téléma Ngenga",
+    "site_title": "Administration Telema Ngenga",
+    "site_header": "Telema Ngenga",
     "site_brand": "Tableau de Bord",
     "site_logo": "Img_logo/logo.png",
     "login_logo": "Img_logo/logo.png",
     "login_logo_dark": "Img_logo/logo.png",
     "welcome_sign": "Bienvenue dans l'administration de l'École Téléma Ngenga",
-    "copyright": "École Téléma Ngenga",
+    "copyright": "École Telema Ngenga",
     "custom_css": "css/custom_admin.css",
     "favicon": "Img_logo/logo.png",
     "topmenu_links": [

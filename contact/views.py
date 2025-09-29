@@ -32,7 +32,7 @@ def contact_view(request):
             # 2. Email de confirmation pour l'utilisateur
             user_html_content = render_to_string('emails/user_confirmation.html', context)
             user_text_content = f"Bonjour {context['nom']}, merci de nous avoir contactés..."
-            user_sujet = "Confirmation de votre message à l'École Téléma Ngenga"
+            user_sujet = "Confirmation de votre message à l'École Telema Ngenga"
             user_email = EmailMultiAlternatives(
                 subject=user_sujet, 
                 body=user_text_content, 
